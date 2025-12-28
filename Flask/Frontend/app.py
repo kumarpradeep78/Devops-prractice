@@ -14,6 +14,12 @@ app = Flask(__name__)
 def home():
     return  render_template('index.html')
 
+@app.route('/todo', methods='POST')
+def todo():
+    data=dict(request.form)
+    requests.post(f"{backend}/todo", json=data) 
+    return  "TODO submitted successfully!"
+
 
 @app.route('/form', methods=['POST'])
 def submit():
