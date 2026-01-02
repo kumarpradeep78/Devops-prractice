@@ -1,0 +1,28 @@
+version: "3.9"
+
+networks:
+  app_net:
+
+services:
+  backend:
+    build: ./Backend
+    container_name: flask_backend
+    ports:
+      - "8000:8000"
+    networks:
+      - app_net
+
+  frontend:
+    build: ./Frontend
+    container_name: node_frontend
+    environment:
+      - BACKEND_URL=http://backend:8000
+    ports:
+      - "8080:8080"
+    networks:
+      - app_net
+    depends_on:
+      - backend
+
+volumes:
+  mongo_data:
