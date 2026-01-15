@@ -1,0 +1,7 @@
+terraform init
+terraform apply \
+  -var="key_name=flask-node" \
+  -var="private_key_path=F:/vmpractice/flask-node.pem"
+
+
+terraform apply -var="key_name=flask-node" -var="private_key_path=F:/vmpractice/flask-node.pem"
